@@ -1,0 +1,29 @@
+{% extends 'articles/base.html' %}
+{% block body %}
+  <h1>게시판에 오신걸 환영합니다.</h1>
+  <ol>
+    <a href="/articles/new/" class="btn btn-success">글 작성하기</a>
+    <hr>
+    <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">제목</th>
+      <th scope="col">작성일자</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for article in articles %}
+    <tr>
+      <th scope="row">{{ article.id }}</th>
+      <td>
+      <a href="/articles/{{ article.pk }}">
+        {{ article.title }}
+      </a>
+      </td>
+      <td>{{ article.created_at }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock body %}
